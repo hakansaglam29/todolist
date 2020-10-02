@@ -1,10 +1,3 @@
-/*
- * 1) TODO'ya tekrar basılınca, todo durumu eski haline gelsin
- *    İpucu (Tek bir satırda değişiklik yapılacak)
- *
- * 2) Todo silme operasyonu
- **/
-
 const todoList = [];
 
 class TodoList {
@@ -20,7 +13,6 @@ class TodoList {
     todoList.push(todoObject);
     this.display();
   }
-
   display() {
       let item = todoList[todoList.length - 1];
       let liDiv = document.createElement('div');
@@ -37,19 +29,16 @@ class TodoList {
         else listElement.classList = "";
     });
     aElement.addEventListener("click",() => {
-     aElement.parentElement.innerHTML = ""
-
+     aElement.parentElement.remove()
     })
     this.todoListElement.appendChild(liDiv);
     liDiv.appendChild(aElement);
     liDiv.appendChild(listElement);
     aElement.appendChild(listicon);
-
   }
 }
 
 const myTodoList = new TodoList(document.querySelector("#myUL"));
-
 document.querySelector("#todo_button").addEventListener("click", function () {
   const todoText = document.querySelector("#myInput").value;
   myTodoList.add(todoText);
